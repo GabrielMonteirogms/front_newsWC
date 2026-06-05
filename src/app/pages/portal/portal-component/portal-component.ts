@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-portal-components',
+  selector: 'app-portal-component',
   standalone: false,
-  templateUrl: './portal-components.html',
-  styleUrl: './portal-components.css',
+  templateUrl: './portal-component.html',
+  styleUrl: './portal-component.css',
 })
-export class PortalComponents {}
+export class PortalComponent {}

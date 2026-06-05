@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-news-form-components',
+  selector: 'app-news-form-component',
   standalone: false,
-  templateUrl: './news-form-components.html',
-  styleUrl: './news-form-components.css',
+  templateUrl: './news-form-component.html',
+  styleUrl: './news-form-component.css',
 })
-export class NewsFormComponents {}
+export class NewsFormComponent {}

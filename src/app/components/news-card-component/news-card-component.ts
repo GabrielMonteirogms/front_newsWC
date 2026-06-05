@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-news-card-components',
+  selector: 'app-news-card-component',
   standalone: false,
-  templateUrl: './news-card-components.html',
-  styleUrl: './news-card-components.css',
+  templateUrl: './news-card-component.html',
+  styleUrl: './news-card-component.css',
 })
-export class NewsCardComponents {}
+export class NewsCardComponent {}
