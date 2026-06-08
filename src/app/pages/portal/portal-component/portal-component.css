@@ -1,0 +1,16 @@
+.news-card {
+  margin-bottom: 30px;
+}
+
+.news-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 10px;
+}
