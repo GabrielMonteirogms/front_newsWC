@@ -1,5 +1,24 @@
-<h1>TESTE</h1>
+<app-navbar-component></app-navbar-component>
 
-<p>Total de notícias: {{ newsList.length }}</p>
+<app-featured-news-components></app-featured-news-components>
+<h1>Portal Copa do Mundo</h1>
 
-<pre>{{ newsList | json }}</pre>
+<p>Angular Length: {{ newsList.length }}</p>
+
+<div *ngFor="let news of newsList">
+
+  <p><strong>ID:</strong> {{ news.id }}</p>
+
+  <p><strong>Título:</strong> {{ news.title }}</p>
+
+
+
+  <img
+    [src]="news.imageUrl"
+    [alt]="news.title"
+    width="250"
+  >
+
+  <hr>
+
+</div>

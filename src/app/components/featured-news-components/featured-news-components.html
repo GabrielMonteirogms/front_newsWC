@@ -1,1 +1,16 @@
-<p>featured-news-components works!</p>
+<div *ngFor="let news of featuredNews" class="featured">
+
+  <img
+    [src]="news.imageUrl"
+    [alt]="news.title"
+  >
+
+  <div class="featured-content">
+
+    <h1>{{ news.title }}</h1>
+
+    <p>{{ news.summary }}</p>
+
+  </div>
+
+</div>
