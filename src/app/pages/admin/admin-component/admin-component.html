@@ -140,6 +140,38 @@
 
 </div>
 
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+  <!-- VIEWS -->
+  <div>
+    <label class="block text-sm text-white/60 mb-2">
+      Views
+    </label>
+
+    <input
+      type="number"
+      min="0"
+      [(ngModel)]="news.views"
+      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+             focus:ring-2 focus:ring-green-400 outline-none"
+      placeholder="Ex: 1500">
+  </div>
+
+  <!-- DATA -->
+  <div>
+    <label class="block text-sm text-white/60 mb-2">
+      Data da notícia
+    </label>
+
+    <input
+      type="datetime-local"
+      [(ngModel)]="news.createdAt"
+      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+             focus:ring-2 focus:ring-green-400 outline-none">
+  </div>
+
+</div>
+
         <!-- BOTÕES -->
         <div class="flex gap-4 mt-6">
 

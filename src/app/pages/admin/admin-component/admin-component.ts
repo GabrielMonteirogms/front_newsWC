@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
     imageUrl: '',
     featured: false,
     views: 0,
+    createdAt: '',
     categoryId: null,
     journalistId: null,
     stadiumId: null
@@ -92,6 +93,7 @@ export class AdminComponent implements OnInit {
       imageUrl: '',
       featured: false,
       views: 0,
+      createdAt: '',
       categoryId: null,
       journalistId: null,
       stadiumId: null
