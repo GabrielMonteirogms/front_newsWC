@@ -5,10 +5,31 @@
   </div>
 
   <ul class="menu">
-    <li><a href="#">Início</a></li>
-    <li><a href="#">Últimas Notícias</a></li>
-    <li><a href="#">Destaques</a></li>
-    <li><a href="#">Mais Vistas</a></li>
+
+    <li>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Início
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/latest" routerLinkActive="active">
+        Últimas
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/featured" routerLinkActive="active">
+        Destaques
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/most-viewed" routerLinkActive="active">
+        Mais vistas
+      </a>
+    </li>
+
   </ul>
 
 </nav>

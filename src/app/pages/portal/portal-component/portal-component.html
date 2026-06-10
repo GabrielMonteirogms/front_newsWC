@@ -1,24 +1,29 @@
 <app-navbar-component></app-navbar-component>
 
-<app-featured-news-components></app-featured-news-components>
-<h1>Portal Copa do Mundo</h1>
+<div class="portal-container">
 
-<p>Angular Length: {{ newsList.length }}</p>
+  <h1 class="portal-title">Portal Copa do Mundo</h1>
 
-<div *ngFor="let news of newsList">
+  <div class="news-grid">
 
-  <p><strong>ID:</strong> {{ news.id }}</p>
+    <div class="news-card" *ngFor="let news of newsList">
 
-  <p><strong>Título:</strong> {{ news.title }}</p>
+      <div class="image-wrapper">
+        <img [src]="news.imageUrl" [alt]="news.title">
+      </div>
 
+      <div class="content">
 
+        <h2>{{ news.title }}</h2>
 
-  <img
-    [src]="news.imageUrl"
-    [alt]="news.title"
-    width="250"
-  >
+        <p class="meta">
+          Copa do Mundo • Atualizado agora
+        </p>
 
-  <hr>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

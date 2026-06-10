@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PortalComponent } from './portal-component';
+import { LatestComponent } from './latest-component';
 
-describe('PortalComponent', () => {
-  let component: PortalComponent;
-  let fixture: ComponentFixture<PortalComponent>;
+describe('LatestComponent', () => {
+  let component: LatestComponent;
+  let fixture: ComponentFixture<LatestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PortalComponent],
+      declarations: [LatestComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PortalComponent);
+    fixture = TestBed.createComponent(LatestComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

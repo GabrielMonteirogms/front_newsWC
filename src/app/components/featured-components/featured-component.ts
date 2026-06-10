@@ -3,12 +3,12 @@ import { NewsService } from '../../services/news';
 import { News } from '../../models/news';
 
 @Component({
-  selector: 'app-featured-news-components',
+  selector: 'app-featured-component',
   standalone: false,
-  templateUrl: './featured-news-components.html',
-  styleUrls: ['./featured-news-components.css']
+  templateUrl: './featured-component.html',
+  styleUrls: ['./featured-component.css']
 })
-export class FeaturedNewsComponents implements OnInit {
+export class FeaturedComponent implements OnInit {
 
   featuredNews: News[] = [];
 
