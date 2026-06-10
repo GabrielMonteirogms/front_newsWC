@@ -1,26 +1,19 @@
 <div class="min-h-screen relative overflow-hidden bg-black p-6">
 
-  <!-- 💡 LUZ VERDE SUAVE AO FUNDO -->
-  <div class="absolute inset-0 -z-10 pointer-events-none">
-
-    <div class="absolute top-1/3 left-1/2 w-[700px] h-[700px]
-                bg-green-400/10 blur-[160px] rounded-full
-                animate-pulse">
-    </div>
-
-  </div>
-
   <!-- FUNDO FLUIDO SUAVE -->
   <div class="absolute inset-0 -z-10">
 
+    <!-- verde principal -->
     <div class="absolute top-[-200px] left-[-200px] w-[600px] h-[600px]
                 bg-green-500/20 blur-[140px] rounded-full animate-pulse">
     </div>
 
+    <!-- verde secundário -->
     <div class="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px]
                 bg-emerald-400/15 blur-[160px] rounded-full animate-pulse">
     </div>
 
+    <!-- centro suave -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                 w-[700px] h-[700px] bg-white/5 blur-[180px] rounded-full animate-pulse">
     </div>
@@ -89,6 +82,63 @@
           </label>
 
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+  <!-- CATEGORIA -->
+  <div>
+    <label class="block text-sm text-white/60 mb-2">
+      Categoria
+    </label>
+
+    <select
+      [(ngModel)]="news.categoryId"
+      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+             focus:ring-2 focus:ring-green-400 outline-none">
+
+      <option [ngValue]="1">⚽ Matches</option>
+      <option [ngValue]="2">👥 Teams</option>
+      <option [ngValue]="3">🏟 Stadiums</option>
+
+    </select>
+  </div>
+
+  <!-- JORNALISTA -->
+  <div>
+    <label class="block text-sm text-white/60 mb-2">
+      Jornalista
+    </label>
+
+    <select
+      [(ngModel)]="news.journalistId"
+      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+             focus:ring-2 focus:ring-green-400 outline-none">
+
+      <option [ngValue]="1">Carlos Silva</option>
+      <option [ngValue]="2">John Miller</option>
+      <option [ngValue]="3">Miguel Torres</option>
+
+    </select>
+  </div>
+
+  <!-- ESTÁDIO -->
+  <div>
+    <label class="block text-sm text-white/60 mb-2">
+      Estádio
+    </label>
+
+    <select
+      [(ngModel)]="news.stadiumId"
+      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+             focus:ring-2 focus:ring-green-400 outline-none">
+
+      <option [ngValue]="1">MetLife Stadium</option>
+      <option [ngValue]="2">AT&T Stadium</option>
+      <option [ngValue]="3">Estadio Azteca</option>
+
+    </select>
+  </div>
+
+</div>
 
         <!-- BOTÕES -->
         <div class="flex gap-4 mt-6">

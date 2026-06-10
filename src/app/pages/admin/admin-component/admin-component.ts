@@ -39,20 +39,44 @@ export class AdminComponent implements OnInit {
 
   save() {
 
-    if (this.isEditMode) {
-      this.http.put(`http://localhost:8080/news/${this.news.id}`, this.news)
-        .subscribe(() => {
-          this.reset();
-          this.loadNews();
-        });
-    } else {
-      this.http.post('http://localhost:8080/news', this.news)
-        .subscribe(() => {
-          this.reset();
-          this.loadNews();
-        });
-    }
+  if (!this.news.categoryId || !this.news.journalistId || !this.news.stadiumId) {
+    alert('Publicação criada com sucesso !✅');
+    return;
   }
+
+  if (this.isEditMode) {
+
+    this.http.put(`http://localhost:8080/news/${this.news.id}`, this.news)
+      .subscribe({
+        next: () => {
+          alert('✅ Notícia atualizada com sucesso!');
+          this.reset();
+          this.loadNews();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('❌ Erro ao atualizar notícia');
+        }
+      });
+
+  } else {
+
+    this.http.post('http://localhost:8080/news', this.news)
+      .subscribe({
+        next: () => {
+          alert('✅ Notícia publicada com sucesso!');
+          this.reset();
+          this.loadNews();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('❌ Erro ao publicar notícia');
+        }
+      });
+
+  }
+}
+
 
   edit(news: any) {
     this.news = { ...news };
