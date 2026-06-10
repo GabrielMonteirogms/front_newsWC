@@ -1,7 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 
@@ -19,8 +19,8 @@ import { NewsFormComponent } from './components/news-form-component/news-form-co
 @NgModule({
   declarations: [
     App,
-    AdminComponent,
     NavbarComponent,
+    AdminComponent,
     FooterComponent,
     FeaturedComponent,
     LatestComponent,
@@ -28,9 +28,9 @@ import { NewsFormComponent } from './components/news-form-component/news-form-co
     MostViewedComponent,
     NewsCardComponent,
     NewsFormComponent,
-   
+
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

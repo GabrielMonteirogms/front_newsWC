@@ -13,39 +13,45 @@ export class PortalComponent implements OnInit {
 
   newsList: News[] = [];
 
- constructor(
-  private newsService: NewsService,
-  private cdr: ChangeDetectorRef
-) {}
+  constructor(
+    private newsService: NewsService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
 
     this.newsService.getAll().subscribe({
 
-    next: (data) => {
+      next: (data) => {
 
-  this.newsList = data;
+        this.newsList = data.sort((a, b) => {
 
-  console.log('newsList:', this.newsList);
-  console.log('length:', this.newsList.length);
+          // Destaques primeiro
+          if (a.featured !== b.featured) {
+            return a.featured ? -1 : 1;
+          }
 
-  this.cdr.detectChanges();
+          // Dentro dos destaques, mais views primeiro
+          return b.views - a.views;
 
+        });
+
+        console.log('newsList:', this.newsList);
+        console.log('length:', this.newsList.length);
+
+        this.cdr.detectChanges();
       },
 
       error: (err) => {
-
         console.error('ERRO:', err);
-
       },
 
       complete: () => {
-
         console.log('FINALIZOU');
-
       }
 
     });
 
   }
+
 }

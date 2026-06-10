@@ -5,10 +5,12 @@ import { PortalComponent } from './pages/portal/portal-component/portal-componen
 import { LatestComponent } from './components/latest-component/latest-component';
 import { FeaturedComponent } from './components/featured-components/featured-component';
 import { MostViewedComponent } from './components/most-viewed-component/most-viewed-component';
+import { AdminComponent } from './pages/admin/admin-component/admin-component';
 
 const routes: Routes = [
 
   { path: '', component: PortalComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'latest', component: LatestComponent },
   { path: 'featured', component: FeaturedComponent },
   { path: 'most-viewed', component: MostViewedComponent }
