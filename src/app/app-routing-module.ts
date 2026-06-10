@@ -8,31 +8,10 @@ import { MostViewedComponent } from './components/most-viewed-component/most-vie
 
 const routes: Routes = [
 
-  {
-    path: '',
-    component: PortalComponent
-  },
-
-  {
-    path: 'latest',
-    component: LatestComponent
-  },
-
-  {
-    path: 'featured',
-    component: FeaturedComponent
-  },
-
-  {
-    path: 'most-viewed',
-    component: MostViewedComponent
-  },
-
-  // fallback (opcional, mas recomendado)
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  { path: '', component: PortalComponent },
+  { path: 'latest', component: LatestComponent },
+  { path: 'featured', component: FeaturedComponent },
+  { path: 'most-viewed', component: MostViewedComponent }
 
 ];
 
@@ -40,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,29 +1,121 @@
 <app-navbar-component></app-navbar-component>
 
-<div class="portal-container">
+<div class="min-h-screen bg-slate-50/50 py-12 selection:bg-green-500 selection:text-white">
+  <div class="max-w-7xl mx-auto px-4 space-y-12">
 
-  <h1 class="portal-title">Portal Copa do Mundo</h1>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200 pb-6">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-slate-900 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-green-700">
+          Portal Copa do Mundo
+        </h1>
+        <p class="text-slate-500 mt-2 text-lg font-medium flex items-center gap-2">
+          Notícias atualizadas em tempo real
+        </p>
+      </div>
+      
+      <div class="mt-4 md:mt-0 flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider w-fit">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        Ao vivo • Atualizado agora
+      </div>
+    </div>
 
-  <div class="news-grid">
+    <div *ngIf="newsList.length"
+         class="relative grid grid-cols-1 lg:grid-cols-3 gap-0 rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 group/hero">
 
-    <div class="news-card" *ngFor="let news of newsList">
+      <div class="lg:col-span-2 relative overflow-hidden h-[350px] sm:h-[480px]">
+        <img
+          [src]="newsList[0].imageUrl"
+          class="w-full h-full object-cover transition duration-1000 ease-out group-hover/hero:scale-102"
+        />
 
-      <div class="image-wrapper">
-        <img [src]="news.imageUrl" [alt]="news.title">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+        <div class="absolute bottom-0 inset-x-0 p-6 sm:p-10 text-white">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-green-500/20 backdrop-blur-md border border-green-400/30 text-xs uppercase tracking-widest text-green-300 font-bold">
+            ⚡ Destaque principal
+          </span>
+
+          <h2 class="text-2xl sm:text-4xl font-black leading-tight mt-4 tracking-tight drop-shadow-sm">
+            {{ newsList[0].title }}
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-200 mt-3 max-w-2xl font-light opacity-90 leading-relaxed">
+            {{ newsList[0].summary }}
+          </p>
+        </div>
       </div>
 
-      <div class="content">
+      <div class="p-8 sm:p-10 flex flex-col justify-between bg-slate-900 text-white border-t lg:border-t-0 lg:border-l border-slate-800">
+        <div class="space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-slate-400 block">
+            Análise Rápida
+          </span>
+          <h3 class="text-xl font-bold tracking-tight text-white">
+            Última atualização do Catar
+          </h3>
+          <p class="text-sm text-slate-300 leading-relaxed font-light">
+            Cobertura completa da Copa do Mundo com análises táticas profundas, resultados em tempo real e os bastidores das seleções.
+          </p>
+        </div>
 
-        <h2>{{ news.title }}</h2>
-
-        <p class="meta">
-          Copa do Mundo • Atualizado agora
-        </p>
-
+        <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+          <span class="text-xs text-slate-400 font-medium">Por Redação Esportes</span>
+          <a href="#" class="text-xs font-bold text-green-400 hover:text-green-300 inline-flex items-center gap-1 transition">
+            Ler cobertura →
+          </a>
+        </div>
       </div>
 
     </div>
 
-  </div>
+    <div>
+      <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <span>Mais Notícias</span>
+        <span class="h-1 w-12 bg-green-500 rounded-full inline-block"></span>
+      </h3>
 
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let news of newsList.slice(1)"
+             class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-transparent shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+
+          <div class="relative overflow-hidden aspect-video bg-slate-100">
+            <img
+              [src]="news.imageUrl"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out"
+            />
+            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition duration-300"></div>
+          </div>
+
+          <div class="p-6 flex flex-col flex-grow justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-green-600 uppercase tracking-widest block mb-2">
+                🏆 Copa 2026
+              </span>
+              <h2 class="text-lg font-bold text-slate-800 leading-snug group-hover:text-green-600 transition duration-200">
+                <a href="#" class="hover:underline decoration-green-500/40 underline-offset-4">
+                  {{ news.title }}
+                </a>
+              </h2>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center gap-1">
+                ⏱️ Há poucos minutos
+              </span>
+              <span class="hover:text-slate-600 cursor-pointer">
+                🔖 Salvar
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+<app-footer-component></app-footer-component>
