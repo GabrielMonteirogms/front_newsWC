@@ -1,31 +1,48 @@
-<nav class="navbar">
+<nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
 
-  <div class="logo">
-    Copa News
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+
+    <!-- LOGO -->
+    <div class="text-white font-extrabold text-xl tracking-tight">
+      Copa <span class="text-green-500">News</span>
+    </div>
+
+    <!-- MENU -->
+    <ul class="flex items-center gap-8">
+
+      <li>
+        <a routerLink="/"
+           routerLinkActive="text-white after:w-full"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="relative text-white/70 hover:text-white transition font-medium text-sm
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1
+                  after:h-[2px] after:w-0 after:bg-green-500 after:transition-all">
+          Início
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/latest"
+           routerLinkActive="text-white after:w-full"
+           class="relative text-white/70 hover:text-white transition font-medium text-sm
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1
+                  after:h-[2px] after:w-0 after:bg-green-500 after:transition-all">
+          Últimas
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/most-viewed"
+           routerLinkActive="text-white after:w-full"
+           class="relative text-white/70 hover:text-white transition font-medium text-sm
+                  after:content-[''] after:absolute after:left-0 after:-bottom-1
+                  after:h-[2px] after:w-0 after:bg-green-500 after:transition-all">
+          Mais vistas
+        </a>
+      </li>
+
+    </ul>
+
   </div>
-
-  <ul class="menu">
-
-    <li>
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        Início
-      </a>
-    </li>
-
-    <li>
-      <a routerLink="/latest" routerLinkActive="active">
-        Últimas
-      </a>
-    </li>
-
-   
-
-    <li>
-      <a routerLink="/most-viewed" routerLinkActive="active">
-        Mais vistas
-      </a>
-    </li>
-
-  </ul>
 
 </nav>
