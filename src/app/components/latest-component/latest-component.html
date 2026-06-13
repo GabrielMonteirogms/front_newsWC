@@ -1,103 +1,175 @@
 <div class="min-h-screen bg-black relative overflow-hidden">
 
-  <!-- Glow Background -->
+  <!-- Background -->
   <div class="absolute inset-0 -z-10">
 
-    <div class="absolute top-[-250px] left-[-250px]
-                w-[700px] h-[700px]
-                bg-green-500/15 blur-[180px]
-                rounded-full animate-pulse">
+    <div
+      class="absolute top-[-300px] left-[-300px]
+             w-[800px] h-[800px]
+             bg-green-500/10 blur-[220px]
+             rounded-full">
     </div>
 
-    <div class="absolute bottom-[-250px] right-[-250px]
-                w-[700px] h-[700px]
-                bg-emerald-400/10 blur-[180px]
-                rounded-full animate-pulse">
+    <div
+      class="absolute bottom-[-300px] right-[-300px]
+             w-[800px] h-[800px]
+             bg-emerald-400/10 blur-[220px]
+             rounded-full">
     </div>
 
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 py-10">
+  <div class="max-w-7xl mx-auto px-6 py-12">
 
     <!-- Header -->
-    <div class="mb-10">
+    <div class="mb-12">
 
-      <span class="text-green-400 uppercase tracking-widest text-sm">
+      <span class="uppercase tracking-[6px] text-green-400 text-sm">
         Latest Updates
       </span>
 
-      <h1 class="text-5xl font-extrabold text-white mt-2">
+      <h1 class="text-6xl font-black text-white mt-3">
         Latest News
       </h1>
 
-      <p class="text-white/50 mt-3">
-        Follow the most recent updates from the 2026 FIFA World Cup.
+      <p class="text-white/50 text-lg mt-4">
+        Follow every update from the FIFA World Cup 2026.
       </p>
 
     </div>
 
-    <!-- Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Hero News -->
+    <div
+      *ngIf="latestNews.length > 0"
+      class="relative rounded-3xl overflow-hidden mb-12
+             border border-white/10
+             bg-white/5 backdrop-blur-xl">
+
+      <img
+        [src]="latestNews[0].imageUrl"
+        [alt]="latestNews[0].title"
+        class="w-full h-[600px] object-cover">
 
       <div
-        *ngFor="let n of latestNews"
-        class="group bg-white/5 backdrop-blur-xl
+        class="absolute inset-0
+               bg-gradient-to-t
+               from-black via-black/60 to-transparent">
+      </div>
+
+      <div class="absolute bottom-0 p-10">
+
+        <span
+          class="bg-green-400 text-black
+                 px-4 py-2 rounded-full
+                 font-bold text-sm">
+
+          BREAKING NEWS
+
+        </span>
+
+        <h2
+          class="text-5xl font-black text-white
+                 mt-5 max-w-4xl">
+
+          {{ latestNews[0].title }}
+
+        </h2>
+
+        <p
+          class="text-white/70 text-lg
+                 mt-4 max-w-3xl">
+
+          {{ latestNews[0].summary }}
+
+        </p>
+
+        <div
+          class="flex gap-6 mt-6 text-white/70">
+
+          <span>
+            👁 {{ latestNews[0].views }}
+          </span>
+
+          <span>
+            📅 {{ latestNews[0].createdAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- News Grid -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      <div
+        *ngFor="let n of latestNews.slice(1)"
+        class="group bg-white/5
                border border-white/10
                rounded-3xl overflow-hidden
+               backdrop-blur-xl
+
                hover:border-green-400/50
+               hover:-translate-y-2
                hover:shadow-[0_0_40px_rgba(34,197,94,0.2)]
+
                transition-all duration-300">
 
-        <!-- Imagem -->
+        <!-- Image -->
         <div class="overflow-hidden">
 
           <img
             [src]="n.imageUrl"
             [alt]="n.title"
-            class="w-full h-72 object-cover
-                   group-hover:scale-105
+            class="w-full h-64 object-cover
+                   group-hover:scale-110
                    transition duration-500">
 
         </div>
 
-        <!-- Conteúdo -->
+        <!-- Content -->
         <div class="p-6">
 
-          <!-- Meta -->
-          <div class="flex items-center gap-4 text-sm text-white/40 mb-4">
+          <div
+            class="flex justify-between
+                   text-xs text-white/40 mb-4">
 
             <span>
               👁 {{ n.views }}
             </span>
 
             <span>
-              📅 {{ n.createdAt | date:'dd/MM/yyyy HH:mm' }}
+              📅 {{ n.createdAt | date:'dd/MM/yyyy' }}
             </span>
 
           </div>
 
-          <!-- Título -->
-          <h2
-            class="text-2xl font-bold text-white
+          <h3
+            class="text-xl font-bold text-white
                    group-hover:text-green-300
                    transition">
 
             {{ n.title }}
 
-          </h2>
+          </h3>
 
-          <!-- Resumo -->
-          <p class="text-white/60 mt-4 line-clamp-3">
+          <p
+            class="text-white/60 mt-4
+                   line-clamp-3">
 
             {{ n.summary }}
 
           </p>
 
-          <!-- Botão -->
           <button
-            class="mt-6 px-5 py-2 rounded-xl
-                   bg-green-400 text-black
-                   font-semibold
+            class="mt-6 w-full py-3
+                   rounded-xl
+                   bg-green-400
+                   text-black
+                   font-bold
+
                    hover:bg-green-300
                    transition">
 
