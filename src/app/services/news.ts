@@ -24,6 +24,10 @@ export class NewsService {
     return this.http.get<News[]>(`${this.apiUrl}/featured`);
   }
 
+  getLatest(): Observable<News[]> {
+    return this.http.get<News[]>(`${this.apiUrl}/latest`);
+  }
+
   getMostViewed(): Observable<News[]> {
     return this.http.get<News[]>(`${this.apiUrl}/most-viewed`);
   }

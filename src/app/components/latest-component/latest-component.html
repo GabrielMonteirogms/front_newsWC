@@ -1,1 +1,116 @@
-<p>latest-component works!</p>
+<div class="min-h-screen bg-black relative overflow-hidden">
+
+  <!-- Glow Background -->
+  <div class="absolute inset-0 -z-10">
+
+    <div class="absolute top-[-250px] left-[-250px]
+                w-[700px] h-[700px]
+                bg-green-500/15 blur-[180px]
+                rounded-full animate-pulse">
+    </div>
+
+    <div class="absolute bottom-[-250px] right-[-250px]
+                w-[700px] h-[700px]
+                bg-emerald-400/10 blur-[180px]
+                rounded-full animate-pulse">
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-10">
+
+    <!-- Header -->
+    <div class="mb-10">
+
+      <span class="text-green-400 uppercase tracking-widest text-sm">
+        Latest Updates
+      </span>
+
+      <h1 class="text-5xl font-extrabold text-white mt-2">
+        Latest News
+      </h1>
+
+      <p class="text-white/50 mt-3">
+        Follow the most recent updates from the 2026 FIFA World Cup.
+      </p>
+
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <div
+        *ngFor="let n of latestNews"
+        class="group bg-white/5 backdrop-blur-xl
+               border border-white/10
+               rounded-3xl overflow-hidden
+               hover:border-green-400/50
+               hover:shadow-[0_0_40px_rgba(34,197,94,0.2)]
+               transition-all duration-300">
+
+        <!-- Imagem -->
+        <div class="overflow-hidden">
+
+          <img
+            [src]="n.imageUrl"
+            [alt]="n.title"
+            class="w-full h-72 object-cover
+                   group-hover:scale-105
+                   transition duration-500">
+
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-6">
+
+          <!-- Meta -->
+          <div class="flex items-center gap-4 text-sm text-white/40 mb-4">
+
+            <span>
+              👁 {{ n.views }}
+            </span>
+
+            <span>
+              📅 {{ n.createdAt | date:'dd/MM/yyyy HH:mm' }}
+            </span>
+
+          </div>
+
+          <!-- Título -->
+          <h2
+            class="text-2xl font-bold text-white
+                   group-hover:text-green-300
+                   transition">
+
+            {{ n.title }}
+
+          </h2>
+
+          <!-- Resumo -->
+          <p class="text-white/60 mt-4 line-clamp-3">
+
+            {{ n.summary }}
+
+          </p>
+
+          <!-- Botão -->
+          <button
+            class="mt-6 px-5 py-2 rounded-xl
+                   bg-green-400 text-black
+                   font-semibold
+                   hover:bg-green-300
+                   transition">
+
+            Read More
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
