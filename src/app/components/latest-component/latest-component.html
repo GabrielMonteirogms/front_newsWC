@@ -39,11 +39,12 @@
     </div>
 
     <!-- Hero News -->
-    <div
-      *ngIf="latestNews.length > 0"
-      class="relative rounded-3xl overflow-hidden mb-12
-             border border-white/10
-             bg-white/5 backdrop-blur-xl">
+<div
+  *ngIf="latestNews.length > 0"
+  (click)="openNews(latestNews[0].id)"
+  class="cursor-pointer relative rounded-3xl overflow-hidden mb-12
+         border border-white/10
+         bg-white/5 backdrop-blur-xl">
 
       <img
         [src]="latestNews[0].imageUrl"
@@ -163,19 +164,19 @@
 
           </p>
 
-          <button
-            class="mt-6 w-full py-3
-                   rounded-xl
-                   bg-green-400
-                   text-black
-                   font-bold
+       <button
+  (click)="openNews(n.id)"
+  class="mt-6 w-full py-3
+         rounded-xl
+         bg-green-400
+         text-black
+         font-bold
+         hover:bg-green-300
+         transition">
 
-                   hover:bg-green-300
-                   transition">
+  Read More
 
-            Read More
-
-          </button>
+</button>
 
         </div>
 

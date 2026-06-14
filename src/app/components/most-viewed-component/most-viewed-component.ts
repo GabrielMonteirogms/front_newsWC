@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news';
 import { News } from '../../models/news';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-most-viewed-component',
@@ -15,7 +16,8 @@ export class MostViewedComponent implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +41,12 @@ export class MostViewedComponent implements OnInit {
       }
 
     });
+
+  }
+
+  openNews(id: number): void {
+
+    this.router.navigate(['/news', id]);
 
   }
 
