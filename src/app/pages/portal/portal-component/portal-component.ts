@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { NewsService } from '../../../services/news';
 import { News } from '../../../models/news';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-portal-component',
@@ -15,7 +15,8 @@ export class PortalComponent implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,32 +27,27 @@ export class PortalComponent implements OnInit {
 
         this.newsList = data.sort((a, b) => {
 
-          // Destaques primeiro
           if (a.featured !== b.featured) {
             return a.featured ? -1 : 1;
           }
 
-          // Dentro dos destaques, mais views primeiro
           return b.views - a.views;
 
         });
-
-        console.log('newsList:', this.newsList);
-        console.log('length:', this.newsList.length);
 
         this.cdr.detectChanges();
       },
 
       error: (err) => {
         console.error('ERRO:', err);
-      },
-
-      complete: () => {
-        console.log('FINALIZOU');
       }
 
     });
 
+  }
+
+  openNews(id: number): void {
+    this.router.navigate(['/news', id]);
   }
 
 }

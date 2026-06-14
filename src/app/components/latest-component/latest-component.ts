@@ -35,5 +35,6 @@ export class LatestComponent implements OnInit {
   });
 
 }
-
   }
+
+  

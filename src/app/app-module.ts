@@ -12,9 +12,7 @@ import { LatestComponent } from './components/latest-component/latest-component'
 import { PortalComponent } from './pages/portal/portal-component/portal-component';
 import { MostViewedComponent } from './components/most-viewed-component/most-viewed-component';
 import { FeaturedComponent } from './components/featured-components/featured-component';
-import { NewsCardComponent } from './components/news-card-component/news-card-component';
-import { NewsFormComponent } from './components/news-form-component/news-form-component';
-
+import { NewsDetailsComponent } from './components/new-details/new-details';
 
 @NgModule({
   declarations: [
@@ -26,9 +24,7 @@ import { NewsFormComponent } from './components/news-form-component/news-form-co
     LatestComponent,
     PortalComponent,
     MostViewedComponent,
-    NewsCardComponent,
-    NewsFormComponent,
-
+    NewsDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],

@@ -9,6 +9,13 @@
         "image-alt": "off"
       }
     ],
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off",
+        "label": "off"
+      }
+    ]
   }
 }

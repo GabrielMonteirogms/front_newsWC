@@ -7,7 +7,7 @@ export interface News {
   featured: boolean;
   views: number;
   createdAt: string;
-
+  videoUrl: string;
   categoryId: number;
   journalistId: number;
   stadiumId: number;

@@ -70,15 +70,18 @@
     </div>
 
     <!-- HERO -->
-    <div
-      *ngIf="newsList.length"
-      class="relative grid grid-cols-1 lg:grid-cols-3 gap-0
-             rounded-3xl overflow-hidden
-             bg-white/5 backdrop-blur-xl
-             border border-white/10
-             shadow-[0_0_40px_rgba(0,0,0,0.5)]
-             hover:border-green-400/30
-             transition-all duration-500 group/hero">
+ <div
+  *ngIf="newsList.length"
+  [routerLink]="['/news', newsList[0].id]"
+  class="relative grid grid-cols-1 lg:grid-cols-3 gap-0
+         rounded-3xl overflow-hidden
+         bg-white/5 backdrop-blur-xl
+         border border-white/10
+         shadow-[0_0_40px_rgba(0,0,0,0.5)]
+         hover:border-green-400/30
+         transition-all duration-500
+         group/hero
+         cursor-pointer">
 
       <!-- Imagem -->
       <div
@@ -177,14 +180,13 @@
 
           </span>
 
-          <a
-            href="#"
-            class="text-xs font-bold text-green-400 hover:text-green-300 inline-flex items-center gap-1 transition">
+    <a
+  [routerLink]="['/news', newsList[0].id]"
+  class="text-xs font-bold text-green-400 hover:text-green-300 inline-flex items-center gap-1 transition">
 
-            Ler cobertura →
+  Ler matéria →
 
-          </a>
-
+</a>
         </div>
 
       </div>
@@ -208,13 +210,11 @@
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <div
-          *ngFor="let news of newsList.slice(1)"
-          class="group
-                 bg-white/5 backdrop-blur-xl
-                 rounded-2xl overflow-hidden
-                 border border-white/10
-
+   <div
+  *ngFor="let news of newsList.slice(1)"
+  [routerLink]="['/news', news.id]"
+  class="group
+         cursor-pointer
                  hover:border-green-400/30
                  hover:-translate-y-2
 
@@ -262,12 +262,7 @@
                        leading-snug
                        group-hover:text-green-300
                        transition duration-200">
-
-                <a href="#">
-
-                  {{ news.title }}
-
-                </a>
+{{ news.title }}
 
               </h2>
 
@@ -284,12 +279,9 @@
 
               </span>
 
-              <span
-                class="hover:text-white/70 cursor-pointer">
-
-                🔖 Salvar
-
-              </span>
+            <span>
+  📅 {{ news.createdAt | date:'dd/MM/yyyy' }}
+</span>
 
             </div>
 
