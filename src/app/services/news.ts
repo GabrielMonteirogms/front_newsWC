@@ -32,9 +32,11 @@ export class NewsService {
     return this.http.get<News[]>(`${this.apiUrl}/most-viewed`);
   }
 
-  getByCategory(id: number): Observable<News[]> {
-    return this.http.get<News[]>(`${this.apiUrl}/category/${id}`);
-  }
+ getByCategory(id: number) {
+  return this.http.get<News[]>(
+    `http://localhost:8080/news/category/${id}`
+  );
+}
 
   getByJournalist(id: number): Observable<News[]> {
     return this.http.get<News[]>(`${this.apiUrl}/journalist/${id}`);

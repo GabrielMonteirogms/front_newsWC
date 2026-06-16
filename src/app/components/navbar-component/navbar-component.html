@@ -7,13 +7,45 @@
       Copa <span class="text-green-500">News</span>
     </div>
 
+    <div class="absolute left-4">
+  <button
+    (click)="menuOpen = !menuOpen"
+    class="text-white text-2xl">
+    ☰
+  </button>
+
+   <div
+    *ngIf="menuOpen"
+    class="absolute mt-2 w-52 bg-black border border-white/10 rounded-xl shadow-xl">
+
+    <a routerLink="/matches"
+       class="block px-4 py-3 text-white hover:bg-white/10">
+      Matches
+    </a>
+
+    <a routerLink="/teams"
+       class="block px-4 py-3 text-white hover:bg-white/10">
+      Teams
+    </a>
+
+    <a routerLink="/stadiums"
+       class="block px-4 py-3 text-white hover:bg-white/10">
+      Stadiums
+    </a>
+
+    <a routerLink="/curiosities"
+       class="block px-4 py-3 text-white hover:bg-white/10">
+      Curiosities
+    </a>
+
+  </div>
+</div>
     <!-- MENU -->
     <ul class="flex items-center gap-8">
 
       <li>
         <a routerLink="/"
            routerLinkActive="text-white after:w-full"
-           [routerLinkActiveOptions]="{ exact: true }"
            class="relative text-white/70 hover:text-white transition font-medium text-sm
                   after:content-[''] after:absolute after:left-0 after:-bottom-1
                   after:h-[2px] after:w-0 after:bg-green-500 after:transition-all">
