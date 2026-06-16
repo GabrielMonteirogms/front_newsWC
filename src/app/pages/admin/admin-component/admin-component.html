@@ -2,22 +2,12 @@
 
   <!-- FUNDO FLUIDO SUAVE -->
   <div class="absolute inset-0 -z-10">
-
-    <!-- verde principal -->
     <div class="absolute top-[-200px] left-[-200px] w-[600px] h-[600px]
-                bg-green-500/20 blur-[140px] rounded-full animate-pulse">
-    </div>
-
-    <!-- verde secundário -->
+                bg-green-500/20 blur-[140px] rounded-full animate-pulse"></div>
     <div class="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px]
-                bg-emerald-400/15 blur-[160px] rounded-full animate-pulse">
-    </div>
-
-    <!-- centro suave -->
+                bg-emerald-400/15 blur-[160px] rounded-full animate-pulse"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                w-[700px] h-[700px] bg-white/5 blur-[180px] rounded-full animate-pulse">
-    </div>
-
+                w-[700px] h-[700px] bg-white/5 blur-[180px] rounded-full animate-pulse"></div>
   </div>
 
   <!-- CONTEÚDO -->
@@ -25,30 +15,24 @@
 
     <!-- FORM -->
     <div class="lg:col-span-8">
-
       <div class="bg-white/5 backdrop-blur-xl border border-white/10
                   rounded-2xl p-8 shadow-[0_0_60px_rgba(0,0,0,0.6)]">
 
         <!-- HEADER -->
         <div class="flex justify-between items-center mb-6">
-
           <div>
-            <h1 class="text-2xl font-bold text-white">
-              Admin Portal
-            </h1>
+            <h1 class="text-2xl font-bold text-white">Admin Portal</h1>
             <p class="text-sm text-white/60">
               {{ isEditMode ? 'Editando notícia' : 'Criando notícia' }}
             </p>
           </div>
-
           <span class="text-xs px-3 py-1 rounded-full border border-green-400/30 text-green-300">
             {{ isEditMode ? 'EDIT MODE' : 'CREATE MODE' }}
           </span>
-
         </div>
 
-        <!-- INPUTS -->
-        <div class="space-y-4">
+        <!-- INPUTS PRINCIPAIS -->
+        <div class="space-y-4 mb-4">
 
           <input
             class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
@@ -82,107 +66,88 @@
           </label>
 
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-  <!-- CATEGORIA -->
-  <div>
-    <label class="block text-sm text-white/60 mb-2">
-      Categoria
-    </label>
+        <!-- SELECTS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
 
-    <select
-      [(ngModel)]="news.categoryId"
-      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
-             focus:ring-2 focus:ring-green-400 outline-none">
+          <!-- CATEGORIA -->
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Categoria</label>
+            <select
+              [(ngModel)]="news.categoryId"
+              class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+                     focus:ring-2 focus:ring-green-400 outline-none">
+              <option [ngValue]="null" disabled>Selecione uma categoria</option>
+              <option [ngValue]="1">⚽ Matches</option>
+              <option [ngValue]="2">👥 Teams</option>
+              <option [ngValue]="3">🏟 Stadiums</option>
+              <option [ngValue]="4">📰 Curiosities</option>
+            </select>
+          </div>
 
-      <option [ngValue]="1">⚽ Matches</option>
-      <option [ngValue]="2">👥 Teams</option>
-      <option [ngValue]="3">🏟 Stadiums</option>
-      <option [ngValue]="4">📰 Curiosities</option>
+          <!-- JORNALISTA -->
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Jornalista</label>
+            <select
+              [(ngModel)]="news.journalistId"
+              class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+                     focus:ring-2 focus:ring-green-400 outline-none">
+              <option [ngValue]="null" disabled>Selecione um jornalista</option>
+              <option *ngFor="let j of journalists" [ngValue]="j.id">
+                {{ j.name }}
+              </option>
+            </select>
+          </div>
 
-    </select>
-  </div>
+          <!-- ESTÁDIO -->
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Estádio</label>
+            <select
+              [(ngModel)]="news.stadiumId"
+              class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+                     focus:ring-2 focus:ring-green-400 outline-none">
+              <option [ngValue]="null" disabled>Selecione um estádio</option>
+              <option *ngFor="let s of stadiums" [ngValue]="s.id">
+                {{ s.name }}
+              </option>
+            </select>
+          </div>
 
-  <!-- JORNALISTA -->
-  <div>
-    <label class="block text-sm text-white/60 mb-2">
-      Jornalista
-    </label>
+        </div>
 
-    <select
-      [(ngModel)]="news.journalistId"
-      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
-             focus:ring-2 focus:ring-green-400 outline-none">
+        <!-- VIEWS E DATA -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
-      <option [ngValue]="1">Carlos Silva</option>
-      <option [ngValue]="2">John Miller</option>
-      <option [ngValue]="3">Miguel Torres</option>
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Views</label>
+            <input
+              type="number"
+              min="0"
+              [(ngModel)]="news.views"
+              class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+                     focus:ring-2 focus:ring-green-400 outline-none"
+              placeholder="Ex: 1500">
+          </div>
 
-    </select>
-  </div>
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Data da notícia</label>
+            <input
+              type="datetime-local"
+              [(ngModel)]="news.createdAt"
+              class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
+                     focus:ring-2 focus:ring-green-400 outline-none">
+          </div>
 
-  <!-- ESTÁDIO -->
-  <div>
-    <label class="block text-sm text-white/60 mb-2">
-      Estádio
-    </label>
-
-    <select
-      [(ngModel)]="news.stadiumId"
-      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
-             focus:ring-2 focus:ring-green-400 outline-none">
-
-      <option [ngValue]="1">MetLife Stadium</option>
-      <option [ngValue]="2">AT&T Stadium</option>
-      <option [ngValue]="3">Estadio Azteca</option>
-
-    </select>
-  </div>
-
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-  <!-- VIEWS -->
-  <div>
-    <label class="block text-sm text-white/60 mb-2">
-      Views
-    </label>
-
-    <input
-      type="number"
-      min="0"
-      [(ngModel)]="news.views"
-      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
-             focus:ring-2 focus:ring-green-400 outline-none"
-      placeholder="Ex: 1500">
-  </div>
-
-  <!-- DATA -->
-  <div>
-    <label class="block text-sm text-white/60 mb-2">
-      Data da notícia
-    </label>
-
-    <input
-      type="datetime-local"
-      [(ngModel)]="news.createdAt"
-      class="w-full p-3 rounded-xl bg-black/40 border border-white/10 text-white
-             focus:ring-2 focus:ring-green-400 outline-none">
-  </div>
-
-</div>
+        </div>
 
         <!-- BOTÕES -->
-        <div class="flex gap-4 mt-6">
+        <div class="flex gap-4">
 
           <button
             (click)="save()"
             class="flex-1 py-3 rounded-xl font-semibold text-black
                    bg-green-400 hover:bg-green-300
-                   shadow-[0_0_25px_rgba(34,197,94,0.4)]
-                   transition">
-
+                   shadow-[0_0_25px_rgba(34,197,94,0.4)] transition">
             {{ isEditMode ? 'Atualizar' : 'Publicar' }}
           </button>
 
@@ -190,7 +155,6 @@
             *ngIf="isEditMode"
             (click)="reset()"
             class="px-6 rounded-xl bg-white/10 border border-white/10 text-white/70 hover:bg-white/20">
-
             Cancelar
           </button>
 
@@ -201,12 +165,9 @@
 
     <!-- LISTA -->
     <div class="lg:col-span-4">
-
       <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
 
-        <h2 class="text-white font-semibold mb-4">
-          Notícias
-        </h2>
+        <h2 class="text-white font-semibold mb-4">Notícias</h2>
 
         <div class="space-y-3 max-h-[75vh] overflow-auto pr-2">
 
@@ -216,41 +177,28 @@
                    hover:border-green-400/40 transition">
 
             <div class="flex justify-between items-start">
-
               <div>
-                <p class="text-white font-medium line-clamp-1">
-                  {{ n.title }}
-                </p>
-                <p class="text-xs text-white/50">
-                  {{ n.views }} views
-                </p>
+                <p class="text-white font-medium line-clamp-1">{{ n.title }}</p>
+                <p class="text-xs text-white/50">{{ n.views }} views</p>
               </div>
-
               <span
                 *ngIf="n.featured"
                 class="text-xs px-2 py-1 bg-green-400/10 text-green-300 rounded-full">
-
                 destaque
               </span>
-
             </div>
 
             <div class="flex gap-2 mt-3">
-
               <button
                 (click)="edit(n)"
                 class="flex-1 bg-green-400 text-black py-2 rounded-lg text-sm font-medium">
-
                 Editar
               </button>
-
               <button
                 (click)="deleteNews(n.id)"
                 class="flex-1 bg-red-500 text-white py-2 rounded-lg text-sm font-medium">
-
                 Delete
               </button>
-
             </div>
 
           </div>
@@ -258,7 +206,6 @@
         </div>
 
       </div>
-
     </div>
 
   </div>

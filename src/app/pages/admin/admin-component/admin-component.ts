@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class AdminComponent implements OnInit {
 
   newsList: any[] = [];
+  journalists: any[] = [];
+  stadiums: any[] = [];
 
   isEditMode = false;
 
@@ -31,6 +33,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadNews();
+    this.loadJournalists();
+    this.loadStadiums();
   }
 
   loadNews() {
@@ -38,46 +42,50 @@ export class AdminComponent implements OnInit {
       .subscribe(data => this.newsList = data);
   }
 
+  loadJournalists() {
+    this.http.get<any[]>('http://localhost:8080/journalists')
+      .subscribe(data => this.journalists = data);
+  }
+
+  loadStadiums() {
+    this.http.get<any[]>('http://localhost:8080/stadiums')
+      .subscribe(data => this.stadiums = data);
+  }
+
   save() {
+    if (!this.news.categoryId || !this.news.journalistId || !this.news.stadiumId) {
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
 
-  if (!this.news.categoryId || !this.news.journalistId || !this.news.stadiumId) {
-    alert('Publicação criada com sucesso !✅');
-    return;
+    if (this.isEditMode) {
+      this.http.put(`http://localhost:8080/news/${this.news.id}`, this.news)
+        .subscribe({
+          next: () => {
+            alert('✅ Notícia atualizada com sucesso!');
+            this.reset();
+            this.loadNews();
+          },
+          error: (err) => {
+            console.error(err);
+            alert('❌ Erro ao atualizar notícia');
+          }
+        });
+    } else {
+      this.http.post('http://localhost:8080/news', this.news)
+        .subscribe({
+          next: () => {
+            alert('✅ Notícia publicada com sucesso!');
+            this.reset();
+            this.loadNews();
+          },
+          error: (err) => {
+            console.error(err);
+            alert('❌ Erro ao publicar notícia');
+          }
+        });
+    }
   }
-
-  if (this.isEditMode) {
-
-    this.http.put(`http://localhost:8080/news/${this.news.id}`, this.news)
-      .subscribe({
-        next: () => {
-          alert('✅ Notícia atualizada com sucesso!');
-          this.reset();
-          this.loadNews();
-        },
-        error: (err) => {
-          console.error(err);
-          alert('❌ Erro ao atualizar notícia');
-        }
-      });
-
-  } else {
-
-    this.http.post('http://localhost:8080/news', this.news)
-      .subscribe({
-        next: () => {
-          alert('✅ Notícia publicada com sucesso!');
-          this.reset();
-          this.loadNews();
-        },
-        error: (err) => {
-          console.error(err);
-          alert('❌ Erro ao publicar notícia');
-        }
-      });
-
-  }
-}
-
 
   edit(news: any) {
     this.news = { ...news };
@@ -100,17 +108,18 @@ export class AdminComponent implements OnInit {
     };
     this.isEditMode = false;
   }
-  deleteNews(id: number) {
-  if (!confirm('Tem certeza que deseja deletar esta notícia?')) return;
 
-  this.http.delete(`http://localhost:8080/news/${id}`)
-    .subscribe({
-      next: () => {
-        this.loadNews(); // atualiza lista
-      },
-      error: (err) => {
-        console.error('Erro ao deletar notícia:', err);
-      }
-    });
-}
+  deleteNews(id: number) {
+    if (!confirm('Tem certeza que deseja deletar esta notícia?')) return;
+
+    this.http.delete(`http://localhost:8080/news/${id}`)
+      .subscribe({
+        next: () => {
+          this.loadNews();
+        },
+        error: (err) => {
+          console.error('Erro ao deletar notícia:', err);
+        }
+      });
+  }
 }
